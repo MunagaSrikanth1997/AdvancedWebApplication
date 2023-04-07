@@ -1,0 +1,29 @@
+.jumbotron {
+    background-color: rgb(77, 168, 77);
+    max-width: 100%;
+}
+
+#aTitle {
+    text-align: center;
+    pointer-events: fill;
+    text-decoration: none;
+}
+
+#aTitleSub {
+    font-style: italic;
+    font-size: small;
+    font-weight: bold;
+}
+
+.accountsSection {
+    overflow-y:auto;
+display: inline-block;
+    height: 300px;
+    width: 50%;
+}
+
+.paymentsSection {
+    height: auto;
+    width: 50%;
+    float: right;
+}
