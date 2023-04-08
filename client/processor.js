@@ -41,16 +41,28 @@ var login = async () => {
     var userName = data("userName").value;
     var pwd = data("pwd").value;
     console.log(userName);
-    var parms={
+    var params={
         
         userName: userName,
         password: pwd
     
 }
-    console.log(pwd);
-    const query = Object.keys(params).map(k => `${esc(k)}=${esc(params[k])}`).join('&')
-    await fetch('http://localhost:8080/login'+query, {
-        method: "GET",
+
+var url=new URL('http://localhost:8080/login');
+var postBody=new FormData();
+postBody.append("userName",userName);
+postBody.append("password",pwd);
+ //url.searchParams.append("userName",userName);
+ //url.searchParams.append("password",pwd);
+    console.log(params);
+    
+    await fetch(url, {
+       
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+            },
+         body: JSON.stringify(params)
         
     }).then((response) => {
         return response.body;
