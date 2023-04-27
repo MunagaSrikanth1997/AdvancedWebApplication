@@ -26,4 +26,25 @@ display: inline-block;
     height: auto;
     width: 50%;
     float: right;
+    padding-left: 2em;
+}
+
+.investmentPortfolio{
+    overflow-y:auto;
+display: inline-block;
+    height: 300px;
+    width: 50%;
+}
+
+.statements{
+    height: auto;
+    width: 50%;
+    float: right;
+   
+}
+
+#history{
+    overflow-x:auto;
+    overflow-y:auto;
+    display: inline-block;
 }

@@ -7,11 +7,13 @@ const express = require('express');
 const xlsx=require('xlsx');
 const app = express();
 const cors = require('cors');
+var dataformatter=require('dateformatter');
 app.use(cors());
 app.use(express.json());
 var bodyParser = require('body-parser');
+const dateformatter = require('dateformatter');
 app.use(bodyParser.urlencoded({ extended: false }));
-
+var workbook=xlsx.readFile('../DataRepo/Confidential.xlsx');
 const data = [{
     "id": "1",
     "accountName": "Checking",
@@ -28,14 +30,58 @@ const data = [{
     "AvailBalance": "$550.35"
 
 }];
+
+app.get('/getPaymentsInfo',(req,res)=>{
+    console.log("getPaymentsInfo");
+const accountsInfo=[];
+    const eligibleFromAcct=[];
+    const eligibleToAcct=[];
+    xlsx.utils.sheet_to_json(workbook.Sheets['AccountsInfo']).forEach(element => {
+        req.query.Id=102548;
+        if(element.UserId===Number(req.query.Id)){
+           
+          if(element.isTransferEligible){
+if(element.isFromAccountTransferEligible){
+    accountsInfo.push(element);
+}else if(element.isToAccountTransferEligible){
+    accountsInfo.push(element);
+}
+          }
+        }else{
+
+        }
+            
+        
+        
+    });
+    res.send(accountsInfo);
+});
+
+app.get('/getTransactionsHistory',(req,res)=>{
+console.log("inside getTransactionsHistory method");
+
+
+let history=[];
+xlsx.utils.sheet_to_json(workbook.Sheets['TransactionsHistory']).forEach(element => {
+    req.query.Id=102548;
+    if(element.UserId===Number(req.query.Id)){
+        history.push(element)
+    }else{
+
+    }
+        
+    
+    
+});
+
+res.send(history);
+});
+
+
 app.get('/test', (req, res) => {
-    
-    console.log(typeof(req.query.Id));
-    var workbook=xlsx.readFile('../DataRepo/Confidential.xlsx');
-    
     var accountsList=[];
     xlsx.utils.sheet_to_json(workbook.Sheets['Accounts']).forEach(element => {
-
+        req.query.Id=102548;
         if(element.Id===Number(req.query.Id)){
            console.log(req.query.Id);
             accountsList.push(element)
@@ -50,8 +96,26 @@ app.get('/test', (req, res) => {
 });
 
 app.post('/login',(req,res)=>{
-console.log(req.body);
-res.send(req.body.userName);
+var resp;
+xlsx.utils.sheet_to_json(workbook.Sheets['UserInfo']).forEach(element => {
+
+    if(element.userName==req.body.userName && element.password==req.body.password){
+       console.log(req.body.userName);
+       resp="success";
+    }else{
+resp="failure";
+    }
+        
+    
+    
+});
+// if(req.body.userName=="Srikanth"){
+// console.log("success");
+// }else{
+// console.log("failure");
+// }
+res.redirect('/test');
+res.send();
 });
 
 
