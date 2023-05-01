@@ -16,8 +16,8 @@
 }
 
 .accountsSection {
-    overflow-y:auto;
-display: inline-block;
+    overflow-y: auto;
+    display: inline-block;
     height: 300px;
     width: 50%;
 }
@@ -29,22 +29,48 @@ display: inline-block;
     padding-left: 2em;
 }
 
-.investmentPortfolio{
-    overflow-y:auto;
-display: inline-block;
-    height: 300px;
+.investmentPortfolio {
+    overflow-y: auto;
+    display: inline-block;
+    height: 500px;
     width: 50%;
+
+
+
 }
 
-.statements{
-    height: auto;
+.statements {
     width: 50%;
     float: right;
-   
+
 }
 
-#history{
-    overflow-x:auto;
-    overflow-y:auto;
-    display: inline-block;
+#history {
+    background-color: #F5F5F5;
+    border: 1px solid #DDDDDD;
+    color: #3B3C3E;
+    font-size: 12px;
+    font-weight: bold;
+    left: -1px;
+
+    height: 400px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+h3 {
+    background-color: yellow;
+    margin-bottom: 1em;
+}
+
+#foo {
+    max-width: 100%;
+    height: 5em;
+    background-color: rgba(0, 0, 0, 0.2);
+
+}
+
+.text-white{
+    float: center;
+    text-align: center;
 }

@@ -20,7 +20,7 @@
 
   <div class="jumbotron">
 
-    <h1 id="aTitle">This is Title<sub id="aTitleSub">Powered by values</sub></h1>
+    <h1 id="aTitle">Banking APP<sub id="aTitleSub">Powered by values</sub></h1>
 
   </div>
   <div>
@@ -53,6 +53,36 @@
   <div>
     <div class="investmentPortfolio">
       <h1>investmentportfolio</h1>
+      <canvas id="acquisitions"></canvas>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- <script>
+  const ctx = document.getElementById('acquisitions');
+  
+  
+  var history=renderInvestmentPortfolio();
+  console.log("************************************************");
+  console.log(history);
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: history[0],
+      datasets: [{
+        label: '# of Votes',
+        data: history[1],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script> -->
+      
       
       
       </div>
@@ -66,12 +96,14 @@
       </div>
   </div>
 
-  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);size:auto">
+  <div class="text-center p-3" id="foo">
     © 2020 Copyright:
     <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
   </div>
 
 
+
+  
 </body>
 
 
