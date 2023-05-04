@@ -102,7 +102,7 @@ const excelProcessor = async () => {
             var td2 = document.createElement("td");
             td2.innerText = record.AccountNumber;
             var td3 = document.createElement("td");
-            td3.innerText = record.AvailBalance;
+            td3.innerText = "$"+ record.AvailBalance;
             var td4 = document.createElement("td");
             td4.innerText = record.AccountType;
 
@@ -147,7 +147,8 @@ const paymentsInfo = async () => {
                 option.value = record.AccountName;
                 option.text = record.AccountName;
                 fromAccountsEligibleList.appendChild(option);
-            } else if (record.isToAccountTransferEligible) {
+            } 
+             if (record.isToAccountTransferEligible) {
                 var option = document.createElement("option");
                 option.value = record.AccountName;
                 option.text = record.AccountName;
